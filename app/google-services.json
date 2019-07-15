@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "484433582815",
+    "firebase_url": "https://werp-commerce.firebaseio.com",
+    "project_id": "werp-commerce",
+    "storage_bucket": "werp-commerce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484433582815:android:d0f5bda0dad01ee0",
+        "android_client_info": {
+          "package_name": "com.mayank.werpecommerceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484433582815-6okqu1ted83juqkr8vb7b4upj58tt05o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mayank.werpecommerceapp",
+            "certificate_hash": "854b040db3bd8b65b6c92770ae43d553734ab61f"
+          }
+        },
+        {
+          "client_id": "484433582815-vqjv415cfrpjphhhmqkspm9v1m1jh8st.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCehUJbQRqXj9pKknys1XfKZBALq-QAg3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484433582815-vqjv415cfrpjphhhmqkspm9v1m1jh8st.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
