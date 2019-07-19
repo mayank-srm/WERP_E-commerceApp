@@ -1,5 +1,6 @@
 package com.mayank.werpecommerceapp.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -13,6 +14,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.mayank.werpecommerceapp.Authentication.LoginActivity;
+import com.mayank.werpecommerceapp.Authentication.Session;
 import com.mayank.werpecommerceapp.R;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -21,14 +24,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Button btnLogout;
+    private Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        session = new Session(this);
+        if(!session.loggedin()) {
+            logout();
+        }
+            btnLogout = (Button)findViewById(R.id.buttonLogout);
+        try {
+            btnLogout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    logout();
+                }
+            });
+        }catch (Exception e){
+
+        }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -103,5 +128,11 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logout(){
+        session.setLoggedin(false);
+        finish();
+        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
     }
 }
