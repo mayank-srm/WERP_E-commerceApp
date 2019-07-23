@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,17 +27,31 @@ import java.util.HashMap;
 
 import javax.xml.validation.Validator;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity  implements View.OnClickListener {
 
-    private EditText inputname,inputphone,inputpasswword;
+    private EditText inputname,inputemail,inputpasswword;
+    private TextView tvLogin;
+    private DbHelper db;
+    Button reg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        inputname = findViewById(R.id.name);
-        inputphone = findViewById(R.id.phone);
-        inputpasswword = findViewById(R.id.password);
+
+        db = new DbHelper(this);
+        tvLogin = (TextView)findViewById(R.id.tvlogin);
+        db = new DbHelper(this);
+        inputname = findViewById(R.id.signupname);
+        inputemail = findViewById(R.id.signupEmail);
+        inputpasswword = findViewById(R.id.signuppassword);
+         reg = (Button)findViewById(R.id.signupBtn);
+
+        reg.setOnClickListener(this);
+        tvLogin.setOnClickListener(this);
+
+
 
     }
 
@@ -45,14 +62,14 @@ public class SignupActivity extends AppCompatActivity {
     private void createAccount() {
 
         String name  =  inputname.getText().toString();
-        String phone = inputphone.getText().toString();
+        String email = inputemail.getText().toString();
         String password = inputpasswword.getText().toString();
 
         if(TextUtils.isEmpty(name))
         {
             Toast.makeText(getApplicationContext(),"Please Enter the Name",Toast.LENGTH_SHORT).show();
         }
-        else if(TextUtils.isEmpty(phone))
+        else if(TextUtils.isEmpty(email))
         {
             Toast.makeText(getApplicationContext(),"Please Enter the Email",Toast.LENGTH_SHORT).show();
         }
@@ -61,11 +78,11 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Please Enter the password",Toast.LENGTH_SHORT).show();
         }
         else{
-            ValidatephoneNumber(name, phone,password);
+            ValidatephoneNumber(name, email,password);
         }
     }
 
-    private void ValidatephoneNumber(final String name, final String phone, final String password) {
+    private void ValidatephoneNumber(final String name, final String email, final String password) {
 
     final DatabaseReference RootRef;
     RootRef = FirebaseDatabase.getInstance().getReference();
@@ -74,14 +91,14 @@ public class SignupActivity extends AppCompatActivity {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-            if(!dataSnapshot.child("Users").child(phone).exists()){
+            if(!dataSnapshot.child("Users").child(email).exists()){
 
                 HashMap<String,Object> userdatamap = new HashMap<>();
-                userdatamap.put("phone",phone);
+                userdatamap.put("phone",email);
                 userdatamap.put("password",password);
                 userdatamap.put("name",name);
 
-                RootRef.child("Users").child(phone).updateChildren(userdatamap).
+                RootRef.child("Users").child(email).updateChildren(userdatamap).
                         addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -109,5 +126,36 @@ public class SignupActivity extends AppCompatActivity {
 
         }
     });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.signupBtn:
+                register();
+                break;
+            case R.id.tvlogin:
+                startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+                finish();
+                break;
+            default:
+
+        }
+    }
+
+    private void register(){
+        String email = inputemail.getText().toString();
+        String password = inputpasswword.getText().toString();
+        if(email.isEmpty() && password.isEmpty()){
+            displayToast("Username/password field empty");
+        }else{
+            db.addUser(email,password);
+            displayToast("User registered");
+            finish();
+        }
+    }
+
+    private void displayToast(String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

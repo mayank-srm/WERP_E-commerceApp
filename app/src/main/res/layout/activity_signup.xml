@@ -15,44 +15,58 @@
         android:id="@+id/logo"/>
 
     <EditText
-        android:layout_width="300dp"
+        android:id="@+id/signupname"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
         android:hint="Name"
-        android:id="@+id/name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <EditText
-        android:layout_width="300dp"
+        android:id="@+id/signupEmail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
-        android:hint="Phone no."
-        android:id="@+id/phone"
-        android:inputType="number"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:textSize="20sp"
-        tools:ignore="TextFields" />
-
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/phone"
-        android:hint="Password"
-        android:id="@+id/password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:textSize="20sp"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="197dp"
+        android:ems="10"
+        android:hint="email"
+        android:inputType="textEmailAddress" />
 
     <Button
+        android:id="@+id/signupBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/password"
-        android:text="Signup"
-        android:id="@+id/login"
+        android:layout_below="@+id/signuppassword"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="32dp"
         android:onClick="Signup"
-        android:layout_marginTop="60dp"/>
+        android:text="Signup" />
+
+    <TextView
+        android:id="@+id/tvlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="96dp"
+        android:layout_marginBottom="19dp"
+        android:text="Back to Login"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/signuppassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signupEmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="-192dp"
+        android:hint="Password"
+        android:textSize="20sp" />
 </RelativeLayout>
