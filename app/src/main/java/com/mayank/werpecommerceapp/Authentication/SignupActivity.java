@@ -26,12 +26,13 @@ import com.mayank.werpecommerceapp.R;
 import java.util.HashMap;
 
 import javax.xml.validation.Validator;
-
+/**
+ * Created by MAYANK SINGH on 15-07-2019.
+ */
 public class SignupActivity extends AppCompatActivity  implements View.OnClickListener {
 
     private EditText inputname,inputemail,inputpasswword;
     private TextView tvLogin;
-    private DbHelper db;
     Button reg;
 
     @Override
@@ -39,14 +40,11 @@ public class SignupActivity extends AppCompatActivity  implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-
-        db = new DbHelper(this);
-        tvLogin = (TextView)findViewById(R.id.tvlogin);
-        db = new DbHelper(this);
+        tvLogin = findViewById(R.id.tvlogin);
         inputname = findViewById(R.id.signupname);
-        inputemail = findViewById(R.id.signupEmail);
+        inputemail = findViewById(R.id.signupPhone);
         inputpasswword = findViewById(R.id.signuppassword);
-         reg = (Button)findViewById(R.id.signupBtn);
+         reg = findViewById(R.id.signupBtn);
 
         reg.setOnClickListener(this);
         tvLogin.setOnClickListener(this);
@@ -149,7 +147,6 @@ public class SignupActivity extends AppCompatActivity  implements View.OnClickLi
         if(email.isEmpty() && password.isEmpty()){
             displayToast("Username/password field empty");
         }else{
-            db.addUser(email,password);
             displayToast("User registered");
             finish();
         }

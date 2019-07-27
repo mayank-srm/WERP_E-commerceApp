@@ -20,31 +20,36 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="30dp"
         android:hint="Name"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/signupEmail"
+        android:id="@+id/signupPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="197dp"
+        android:layout_below="@+id/signupname"
+        android:layout_margin="20dp"
         android:ems="10"
-        android:hint="email"
-        android:inputType="textEmailAddress" />
+        android:hint="PHONE"
+        android:inputType="number" />
 
+    <EditText
+        android:id="@+id/signuppassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signupPhone"
+        android:layout_margin="20dp"
+        android:hint="Password"
+        android:textSize="20sp" />
     <Button
         android:id="@+id/signupBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signuppassword"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="25dp"
         android:onClick="Signup"
         android:text="Signup" />
 
@@ -52,21 +57,10 @@
         android:id="@+id/tvlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="96dp"
-        android:layout_marginBottom="19dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/signupBtn"
+        android:layout_margin="25dp"
         android:text="Back to Login"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/signuppassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/signupEmail"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="-192dp"
-        android:hint="Password"
         android:textSize="20sp" />
+
 </RelativeLayout>

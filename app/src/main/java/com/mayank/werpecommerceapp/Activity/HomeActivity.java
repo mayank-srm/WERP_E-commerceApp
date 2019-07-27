@@ -2,48 +2,38 @@ package com.mayank.werpecommerceapp.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
-
-import androidx.core.view.GravityCompat;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-import com.google.android.material.navigation.NavigationView;
-import com.mayank.werpecommerceapp.Authentication.LoginActivity;
-import com.mayank.werpecommerceapp.Authentication.Session;
-import com.mayank.werpecommerceapp.R;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.view.Menu;
-import android.widget.Button;
-import android.widget.Toast;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+import com.mayank.werpecommerceapp.Authentication.LoginActivity;
+import com.mayank.werpecommerceapp.R;
+
+/**
+ * Created by MAYANK SINGH on 15-07-2019.
+ */
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button btnLogout;
-    private Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
-        session = new Session(this);
-        if(!session.loggedin()) {
-            logout();
-        }
-            btnLogout = (Button)findViewById(R.id.buttonLogout);
+            btnLogout = findViewById(R.id.buttonLogout);
         try {
             btnLogout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -131,7 +121,6 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void logout(){
-        session.setLoggedin(false);
         finish();
         startActivity(new Intent(HomeActivity.this, LoginActivity.class));
     }

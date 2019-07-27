@@ -19,8 +19,9 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/loginEmail"
+        android:layout_below="@+id/phone"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="56dp"
         android:hint="Password"
         android:textSize="20sp" />
@@ -40,7 +41,7 @@
         tools:ignore="UnknownId" />
 
     <EditText
-        android:id="@+id/loginEmail"
+        android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
@@ -48,21 +49,16 @@
         android:layout_marginStart="9dp"
         android:layout_marginTop="34dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="Phone"
         android:inputType="textEmailAddress" />
 
     <Button
         android:id="@+id/loginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="166dp"
+        android:layout_height="38dp"
         android:layout_below="@+id/password"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="122dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="168dp"
         android:onClick="login"
         android:text="login" />
 </RelativeLayout>

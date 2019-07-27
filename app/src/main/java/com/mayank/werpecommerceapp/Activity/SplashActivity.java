@@ -8,7 +8,9 @@ import android.os.Handler;
 
 import com.mayank.werpecommerceapp.Authentication.LoginActivity;
 import com.mayank.werpecommerceapp.R;
-
+/**
+ * Created by MAYANK SINGH on 15-07-2019.
+ */
 public class SplashActivity extends AppCompatActivity {
 
     Handler handler;
